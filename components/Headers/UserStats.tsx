@@ -1,5 +1,5 @@
 import styles from './UserStats.module.scss';
-import { Icon } from '../icons/Icon';
+import { Icon } from '../Icons/Icon';
 import { ExtendedPaletteScarletRed } from '@seed-health/tokens';
 
 export function UserStats() {
