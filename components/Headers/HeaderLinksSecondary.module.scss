@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  gap: 8px;
+  padding: 0 6px;
+  border-radius: 32px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 10px 24px;
+  gap: 16px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(28, 58, 19, 0.05);
+  }
+}
+
+.buttonText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: normal;
+  text-align: center;
+  letter-spacing: -0.04px;
+  color: #1c3a13;
+  margin: 0;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

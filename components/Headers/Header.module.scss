@@ -1,0 +1,9 @@
+.root {
+  z-index: 2; //should be a var, use screen +1
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 8px 8px 16px;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}

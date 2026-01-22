@@ -1,0 +1,9 @@
+@use '@seed-health/tokens/scss/variables' as *;
+
+.root {
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: $gap-48 $gap-48 $gap-40;
+}

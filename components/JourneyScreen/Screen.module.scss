@@ -1,0 +1,9 @@
+.root {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-radius: 1em;
+  height: calc(100vh - 4em);
+  background: linear-gradient(180deg, rgba(234, 235, 228, 0.50) 10.44%, rgba(234, 235, 228, 0.00) 48.61%, rgba(234, 235, 228, 0.50) 90.67%);
+}

@@ -1,0 +1,13 @@
+.page {
+  background: var(--container-seed-green, #1C3A13);
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  border-radius: 1em;
+  background: var(--container-snow-white, #FCFCF7);
+  color: #1c3a13;
+  display: flex;
+  flex-direction: column;
+}
