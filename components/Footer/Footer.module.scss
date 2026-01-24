@@ -1,11 +1,13 @@
 .footer {
+  flex: 1;
   background: #fcfcf7;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  position: relative;
   width: 100%;
-  position: fixed;
-  bottom: 0;
+
+  a {
+    text-decoration: none;
+  }
 }

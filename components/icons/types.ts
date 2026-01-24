@@ -9,4 +9,6 @@ export type IconName =
   'nutrientsDelivered' |
   'points' |
   'strainsDelivered' |
-  'subscriptions';
+  'subscriptions' |
+  'audioMenu' |
+  'audioPlay';

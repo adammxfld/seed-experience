@@ -5,9 +5,9 @@ import { HeaderLinksSecondary } from './HeaderLinksSecondary';
 
 export function Header() {
   return (
-    <div className={styles.root}>
+    <header className={styles.root}>
       <HeaderLinksPrimary />
       <HeaderLinksSecondary />
-    </div>
+    </header>
   );
 }

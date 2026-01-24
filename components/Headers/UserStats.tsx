@@ -1,11 +1,10 @@
 import styles from './UserStats.module.scss';
 import { Icon } from '../Icons/Icon';
-import { ExtendedPaletteScarletRed } from '@seed-health/tokens';
 
 export function UserStats() {
   return (
-    <div className={styles.root}>
-      <div className={styles.statCard}>
+    <ul className={styles.root}>
+      <li className={styles.statCard}>
         <div className={styles.statHeader}>
           <div className={styles.iconContainer}>
             <div className={styles.iconInner}>
@@ -15,9 +14,9 @@ export function UserStats() {
           <p className={styles.statValue}>987</p>
         </div>
         <p className={styles.statLabel}>Points to Spend</p>
-      </div>
+      </li>
 
-      <div className={styles.statCard}>
+      <li className={styles.statCard}>
         <div className={styles.statHeader}>
           <div className={styles.iconContainer}>
             <div className={styles.iconInner}>
@@ -27,9 +26,9 @@ export function UserStats() {
           <p className={styles.statValue}>001</p>
         </div>
         <p className={styles.statLabel}>Subscriptions</p>
-      </div>
+      </li>
 
-      <div className={styles.statCard}>
+      <li className={styles.statCard}>
         <div className={styles.statHeader}>
           <div className={styles.iconContainer}>
             <div className={`${styles.iconInner} ${styles.iconInnerRotated}`}>
@@ -39,9 +38,9 @@ export function UserStats() {
           <p className={styles.statValue}>024</p>
         </div>
         <p className={styles.statLabel}>Strains Delivered</p>
-      </div>
+      </li>
 
-      <div className={styles.statCard}>
+      <li className={styles.statCard}>
         <div className={styles.statHeader}>
           <div className={styles.iconContainer}>
             <div className={styles.iconInner}>
@@ -51,7 +50,7 @@ export function UserStats() {
           <p className={styles.statValue}>020</p>
         </div>
         <p className={styles.statLabel}>Nutrients Delivered</p>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 }

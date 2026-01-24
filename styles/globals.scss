@@ -47,11 +47,21 @@
   font-display: swap;
 }
 
+:root {
+  --header-height: var(--gap-64);
+}
+
 * {
   font-family: 'SeedSans', sans-serif;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

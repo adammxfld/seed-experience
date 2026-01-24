@@ -7,15 +7,17 @@ export function HeaderLinksPrimary() {
         <p className={styles.logoText}>Seed ●</p>
       </div>
 
-      <div className={styles.button}>
-        <p className={styles.buttonText}>Shop</p>
-      </div>
-      <div className={styles.button}>
-        <p className={styles.buttonText}>Science</p>
-      </div>
-      <div className={styles.button}>
-        <p className={styles.buttonText}>Learn</p>
-      </div>
+      <ul className={styles.nav}>
+        <li className={styles.navLink}>
+          <a className={styles.buttonText} href="#">Shop</a>
+        </li>
+        <li className={styles.navLink}>
+          <a className={styles.buttonText} href="#">Science</a>
+        </li>
+        <li className={styles.navLink}>
+          <a className={styles.buttonText} href="#">Learn</a>
+        </li>
+      </ul>
     </div>
   );
 }

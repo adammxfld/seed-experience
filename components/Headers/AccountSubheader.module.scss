@@ -2,8 +2,11 @@
 
 .root {
   z-index: 2;
+  position: fixed;
+  top: var(--header-height);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   padding: $gap-48 $gap-48 $gap-40;
+  width: 100%;
 }

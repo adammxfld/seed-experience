@@ -1,0 +1,108 @@
+@use '@seed-health/tokens/scss/mixins' as *;
+
+.page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.heading {
+  margin: 0 0 24px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.section {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+}
+
+.sample {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.mixinName {
+  background: #f5f5f5;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.prop {
+  color: #666;
+}
+
+// Desktop Display
+.desktop-display-large { @include text-desktop-display-large; }
+.desktop-display-small { @include text-desktop-display-small; }
+
+// Mobile Display
+.mobile-display-large { @include text-mobile-display-large; }
+.mobile-display-small { @include text-mobile-display-small; }
+
+// Fixed Title
+.fixed-title-large { @include text-fixed-title-large; }
+.fixed-title-small { @include text-fixed-title-small; }
+
+// Fixed Body
+.fixed-body-x-large { @include text-fixed-body-x-large; }
+.fixed-body-large { @include text-fixed-body-large; }
+.fixed-body-medium { @include text-fixed-body-medium; }
+.fixed-body-small { @include text-fixed-body-small; }
+.fixed-body-x-small { @include text-fixed-body-x-small; }
+.fixed-body-xx-small { @include text-fixed-body-xx-small; }
+
+// Fixed Label
+.fixed-label-x-large { @include text-fixed-label-x-large; }
+.fixed-label-large { @include text-fixed-label-large; }
+.fixed-label-medium { @include text-fixed-label-medium; }
+.fixed-label-small { @include text-fixed-label-small; }
+.fixed-label-x-small { @include text-fixed-label-x-small; }
+
+// Fixed Mono
+.fixed-mono-large { @include text-fixed-mono-large; }
+.fixed-mono-small { @include text-fixed-mono-small; }
+
+// Fixed Eyebrow
+.fixed-eyebrow { @include text-fixed-eyebrow; }
+
+// Effects
+.effect-card {
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.frosted-glass-light { @include effect-frosted-glass-light; }
+.frosted-glass-strong { @include effect-frosted-glass-strong; }
+.shadow-subtle { @include shadow-subtle-shadow; }

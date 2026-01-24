@@ -8,21 +8,20 @@ interface PillProps {
 
 const Pill: React.FC<PillProps> = ({ text, uppercase = false }) => {
   return (
-    <div className={styles.pill}>
-      <div className={styles.pillBorder} />
-      <div className={`${styles.pillText} ${uppercase ? styles.uppercase : ''}`}>
-        <p>{text}</p>
-      </div>
-    </div>
+    <li className={styles.pill}>
+      <span className={`${uppercase ? styles.uppercase : ''}`}>
+        {text}
+      </span>
+    </li>
   );
 };
 
 const TreatmentPills: React.FC = () => {
   return (
-    <div className={styles.pillsContainer}>
+    <ul className={styles.pillsContainer}>
       <Pill text="Day 60" uppercase />
       <Pill text="DS-01®" />
-    </div>
+    </ul>
   );
 };
 

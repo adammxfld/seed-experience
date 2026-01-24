@@ -1,49 +1,24 @@
 .pillsContainer {
   display: flex;
-  flex: 1 0 0;
   gap: 8px;
   align-items: center;
-  min-height: 1px;
-  min-width: 1px;
-  position: relative;
 }
 
 .pill {
-  display: flex;
-  align-items: center;
   padding: 7px 9px;
-  position: relative;
   border-radius: 25px;
-  flex-shrink: 0;
-}
-
-.pillBorder {
-  position: absolute;
   border: 1.5px solid #1c3a13;
-  inset: 0;
-  pointer-events: none;
-  border-radius: 25px;
-}
 
-.pillText {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Seed Sans', sans-serif;
-  font-weight: 500;
-  justify-content: center;
-  line-height: 0;
-  font-style: normal;
-  position: relative;
-  flex-shrink: 0;
-  color: #1c3a13;
-  font-size: 12px;
+  span {
+    font-weight: 500;
+    font-size: 12px;
+    display: block;
+    line-height: 9px;
 
-  &.uppercase {
-    text-transform: uppercase;
-  }
-
-  p {
-    line-height: 14px;
-    margin: 0;
+    &.uppercase {
+      text-transform: uppercase;
+    }
   }
 }
+
+

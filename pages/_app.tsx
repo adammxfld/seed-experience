@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import '@seed-health/tokens/css/variables.css';
 import '@/styles/seed-tokens.scss';
 import '@/styles/globals.scss';
 
