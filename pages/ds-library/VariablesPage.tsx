@@ -309,7 +309,7 @@ export default function VariablesPage() {
         <title>SCSS Variables | Design Tokens</title>
       </Head>
 
-      <main style={{ padding: 24, fontFamily: 'SeedSans, system-ui, sans-serif' }}>
+      <main style={{ padding: 24, fontFamily: 'Seed Sans, system-ui, sans-serif' }}>
         <h1 style={{ margin: 0, marginBottom: 8 }}>SCSS Variables</h1>
         <p style={{ margin: '0 0 16px', opacity: 0.7, fontSize: 14 }}>
           Import with: <code style={{ background: '#f5f5f5', padding: '2px 6px', borderRadius: 4 }}>@use &apos;@seed-health/tokens/scss/variables&apos; as *;</code>

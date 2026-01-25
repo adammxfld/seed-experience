@@ -1,3 +1,5 @@
+@use '@seed-health/tokens/scss/variables' as *;
+
 .root {
   z-index: 2;
   position: fixed;
@@ -6,9 +8,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 8px 8px 16px;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
+  padding: $gap-8 $gap-8 $gap-8 $gap-16;
+  border-top-left-radius: $radius-medium;
+  border-top-right-radius: $radius-medium;
+  transition: background-color 0.3s ease;
 
   a {
     text-decoration: none;

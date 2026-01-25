@@ -1,38 +1,53 @@
+@use '@seed-health/tokens/scss/variables' as *;
+@use '@seed-health/tokens/scss/mixins' as *;
+
 .root {
   display: flex;
   align-items: center;
-  height: 48px;
-  gap: 8px;
-  padding: 0 6px;
-  border-radius: 32px;
+  height: $gap-48;
+  gap: $gap-8;
+  padding: 0 $gap-8;
+  border-radius: $radius-full;
 }
 
 .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
-  padding: 10px 24px;
-  gap: 16px;
-  border-radius: 100px;
+  height: $appearance-measurement-1000;
+  padding: $gap-8 $gap-24;
+  gap: $gap-16;
+  border-radius: $radius-full;
   cursor: pointer;
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: rgba(28, 58, 19, 0.05);
+    background-color: $state-layer-dark-hovered;
   }
 }
 
 .buttonText {
-  font-weight: 400;
-  font-size: 16px;
+  @include text-fixed-body-medium;
+  line-height: normal;
   line-height: normal;
   text-align: center;
-  letter-spacing: -0.04px;
-  color: #1c3a13;
+  color: $text-primary;
   margin: 0;
-  height: 16px;
+  height: $typography-size-400;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.dark {
+  .button {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .buttonText {
+    color: $text-inverse-primary;
+  }
 }

@@ -1,8 +1,14 @@
 import styles from './HeaderLinksPrimary.module.scss';
 
-export function HeaderLinksPrimary() {
+type ColorMode = 'light' | 'dark';
+
+interface HeaderLinksPrimaryProps {
+  mode?: ColorMode;
+}
+
+export function HeaderLinksPrimary({ mode = 'light' }: HeaderLinksPrimaryProps) {
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${mode === 'dark' ? styles.dark : ''}`}>
       <div className={styles.logoSection}>
         <p className={styles.logoText}>Seed ●</p>
       </div>

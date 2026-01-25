@@ -1,13 +1,15 @@
+@use '@seed-health/tokens/scss/variables' as *;
+
 .page {
-  background: var(--container-seed-green, #1C3A13);
+  background: $container-seed-green;
 }
 
 .main {
   height: 100vh;
   width: 100vw;
-  border-radius: 1em;
-  background: var(--container-snow-white, #FCFCF7);
-  color: #1c3a13;
+  border-radius: $radius-medium;
+  background: $color-primary-snow-white;
+  color: $color-primary-seed-green;
   display: flex;
   flex-direction: column;
 }

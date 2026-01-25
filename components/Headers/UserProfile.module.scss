@@ -1,3 +1,4 @@
+@use '@seed-health/tokens/scss/mixins' as *;
 @use '@seed-health/tokens/scss/variables' as *;
 
 .root {
@@ -8,12 +9,10 @@
 }
 
 .welcomeText {
-  font-weight: $typography-weight-400;
-  font-size: $typography-size-600;
-  line-height: 1.2;
-  letter-spacing: -0.36px;
+  @include text-fixed-title-small;
   color: $text-primary;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .dot {
@@ -23,6 +22,7 @@
   color: $color-primary-seed-green;
   vertical-align: top;
   transform: translate(2px, 6px);
+  transition: color 0.3s ease;
 
   svg {
     display: block;
@@ -43,7 +43,7 @@
   width: $appearance-measurement-600;
   height: $appearance-measurement-600;
   border-radius: $radius-full;
-  border: 2px solid rgb(202 207 195);
+  border: $appearance-measurement-050 solid rgb(202 207 195);
 }
 
 .maskedImage {
@@ -69,12 +69,24 @@
 }
 
 .userName {
-  font-weight: $typography-weight-400;
-  font-size: $typography-size-600;
-  line-height: 1.2;
-  letter-spacing: -0.36px;
+  @include text-fixed-title-small;
   color: $extended-palette-indigo-blue;
   margin: 0;
+  transition: color 0.3s ease;
+}
+
+.dark {
+  .welcomeText {
+    color: $text-inverse-primary;
+  }
+
+  .dot {
+    color: $text-inverse-primary;
+  }
+
+  .userName {
+    color: $text-inverse-secondary;
+  }
 }
 
 

@@ -1,29 +1,33 @@
+@use '@seed-health/tokens/scss/variables' as *;
+@use '@seed-health/tokens/scss/mixins' as *;
+
 .root {
   display: flex;
   align-items: center;
-  height: 48px;
+  height: $appearance-measurement-1200;
   gap: 0;
-  padding: 0 6px;
-  border-radius: 32px;
+  padding: 0 $gap-8;
+  border-radius: $radius-full;
 }
 
 .logoSection {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 14px;
-  border-radius: 100px;
-  padding: 10px 16px;
+  height: $appearance-measurement-400;
+  border-radius: $radius-full;
+  padding: $gutter-small $gutter-medium;
 }
 
 .logoText {
-  font-weight: 500;
-  font-size: 20px;
+  @include text-fixed-label-x-large;
+  letter-spacing: -0.8px;
+  font-weight: 400;
   line-height: normal;
   text-align: center;
-  letter-spacing: -0.05px;
-  color: #1c3a13;
+  color: $text-primary;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .nav {
@@ -35,27 +39,42 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
-  padding: 10px 24px;
-  border-radius: 100px;
+  height: $appearance-measurement-1000;
+  padding: $gap-8 $gap-24;
+  border-radius: $radius-full;
   cursor: pointer;
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: rgba(28, 58, 19, 0.05);
+    background-color: $state-layer-dark-hovered;
   }
 
   a {
-    font-weight: 400;
-    font-size: 16px;
+    @include text-fixed-body-medium;
     line-height: normal;
     text-align: center;
-    letter-spacing: -0.04px;
-    color: #1c3a13;
+    color: $text-primary;
     margin: 0;
-    height: 16px;
+    height: $typography-size-400;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.3s ease;
+  }
+}
+
+.dark {
+  .logoText {
+    color: $text-inverse-primary;
+  }
+
+  .navLink {
+    &:hover {
+      background-color: $state-layer-light-hovered;
+    }
+
+    a {
+      color: $text-inverse-primary;
+    }
   }
 }

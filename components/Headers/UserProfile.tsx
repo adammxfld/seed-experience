@@ -2,9 +2,15 @@ import styles from './UserProfile.module.scss';
 
 import { imgHeadshot as maskImg } from './imports/svg-a5sg4';
 
-export function UserProfile() {
+type ColorMode = 'light' | 'dark';
+
+interface UserProfileProps {
+  mode?: ColorMode;
+}
+
+export function UserProfile({ mode = 'light' }: UserProfileProps) {
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${mode === 'dark' ? styles.dark : ''}`}>
       <p className={styles.welcomeText}>
         Welcome bac
         <span className={styles.dot}>

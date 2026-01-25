@@ -1,19 +1,21 @@
+@use '@seed-health/tokens/scss/mixins' as *;
+@use '@seed-health/tokens/scss/variables' as *;
+
 .pillsContainer {
   display: flex;
-  gap: 8px;
+  gap: $gap-8;
   align-items: center;
 }
 
 .pill {
   padding: 7px 9px;
-  border-radius: 25px;
-  border: 1.5px solid #1c3a13;
+  border-radius: $radius-large;
+  border: 1.5px solid $actions-primary;
 
   span {
-    font-weight: 500;
-    font-size: 12px;
+    @include text-fixed-label-x-small;
+    line-height: $appearance-measurement-200;
     display: block;
-    line-height: 9px;
 
     &.uppercase {
       text-transform: uppercase;

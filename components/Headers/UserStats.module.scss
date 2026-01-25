@@ -1,26 +1,29 @@
+@use '@seed-health/tokens/scss/mixins' as *;
+@use '@seed-health/tokens/scss/variables' as *;
+
 .root {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: $gap-32;
 }
 
 .statCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: $gap-4;
 }
 
 .statHeader {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: $gap-4;
 }
 
 .iconContainer {
   position: relative;
-  width: 29px;
-  height: 29px;
+  width: $appearance-measurement-800;
+  height: $appearance-measurement-800;
   flex-shrink: 0;
 }
 
@@ -29,8 +32,10 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
+  width: $appearance-measurement-600;
+  height: $appearance-measurement-600;
+  color: $text-primary;
+  transition: color 0.3s ease;
 
   svg {
     display: block;
@@ -44,19 +49,26 @@
 }
 
 .statValue {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 1.2;
-  letter-spacing: -0.36px;
-  color: #1c3a13;
+  @include text-fixed-title-small;
+  color: $text-primary;
   margin: 0;
+  transition: color 0.3s ease;
 }
 
 .statLabel {
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 1.4;
-  letter-spacing: -0.05px;
-  color: #1c3a13;
+  @include text-fixed-body-xx-small;
+  color: $text-primary;
   margin: 0;
+  transition: color 0.3s ease;
+}
+
+.dark {
+  .statValue,
+  .statLabel {
+    color: $text-inverse-primary;
+  }
+
+  .iconInner {
+    color: $text-inverse-primary;
+  }
 }

@@ -1,15 +1,19 @@
+@use '@seed-health/tokens/scss/mixins' as *;
 @use '@seed-health/tokens/scss/variables' as *;
 
+.footerNav {
+  display: flex;
+}
 .footerLinksWrapper {
-  height: 48px;
+  height: $appearance-measurement-1200;
   flex-shrink: 0;
-  width: 458px;
+  width: auto;
   background-color: rgba(87, 94, 85, 0.08);
-  border-radius: 520px;
-  gap: 8px;
+  border-radius: $radius-full;
+  gap: $gap-8;
   align-items: center;
   justify-content: center;
-  padding: 8px;
+  padding: $gutter-small;
   display: flex;
   flex-direction: row;
 }
@@ -18,13 +22,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
+  padding: $gutter-small $gutter-medium;
   position: relative;
-  border-radius: 124px;
+  border-radius: $radius-full;
 
   &.active {
+    @include shadow-subtle-shadow;
     background: white;
-    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
     
     a {
       color: $text-primary;
@@ -33,11 +37,8 @@
   }
 
   a {
-    font-weight: 500;
-    line-height: 1.4;
-    font-size: 12px;
-    text-align: center;
-    letter-spacing: -0.06px;
+    @include text-fixed-label-x-small;
     color: $text-secondary;
+    text-align: center;
   }
 }

@@ -1,9 +1,15 @@
 import styles from './UserStats.module.scss';
 import { Icon } from '../Icons/Icon';
 
-export function UserStats() {
+type ColorMode = 'light' | 'dark';
+
+interface UserStatsProps {
+  mode?: ColorMode;
+}
+
+export function UserStats({ mode = 'light' }: UserStatsProps) {
   return (
-    <ul className={styles.root}>
+    <ul className={`${styles.root} ${mode === 'dark' ? styles.dark : ''}`}>
       <li className={styles.statCard}>
         <div className={styles.statHeader}>
           <div className={styles.iconContainer}>
