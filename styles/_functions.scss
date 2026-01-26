@@ -1,0 +1,16 @@
+@function fluid-clamp(
+  $min-value,
+  $max-value,
+  $min-vw,
+  $max-vw
+) {
+  @return clamp(
+    #{$min-value},
+    calc(
+      #{$min-value} +
+      (#{$max-value} - #{$min-value}) *
+      ((100vw - #{$min-vw}) / (#{$max-vw - $min-vw}))
+    ),
+    #{$max-value}
+  );
+}
