@@ -11,14 +11,14 @@ interface UserProfileProps {
 export function UserProfile({ mode = 'light' }: UserProfileProps) {
   return (
     <div className={`${styles.root} ${mode === 'dark' ? styles.dark : ''}`}>
-      <p className={styles.welcomeText}>
+      <h2 className={styles.welcomeText}>
         Welcome bac
         <span className={styles.dot}>
           <svg fill="none" preserveAspectRatio="none" viewBox="0 0 6 6">
             <circle cx="3" cy="3" r="3" fill="currentColor" />
           </svg>
-      </span>
-      </p>
+        </span>
+      </h2>
       <div className={styles.userRow}>
         <div className={styles.maskContainer}>
           <div

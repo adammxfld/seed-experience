@@ -20,10 +20,7 @@
 }
 
 .logoText {
-  @include text-fixed-label-x-large;
-  letter-spacing: -0.8px;
-  font-weight: 400;
-  line-height: normal;
+  @include text-fixed-body-x-large;
   text-align: center;
   color: $text-primary;
   margin: 0;
@@ -51,7 +48,6 @@
 
   a {
     @include text-fixed-body-medium;
-    line-height: normal;
     text-align: center;
     color: $text-primary;
     margin: 0;
