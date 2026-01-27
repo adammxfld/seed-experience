@@ -1,22 +1,32 @@
 import { useRef, useState, useEffect } from 'react';
 import styles from './Slideshow.module.scss';
 import { Slide } from './Slide';
+import IntroSlot, { INTRO_SLOT_MODE } from './IntroSlot/IntroSlot';
 
-export type FrameConfig = string | { children: string[] };
+export type ColorMode = 'light' | 'dark';
+
+type FrameConfig =
+  | { type: 'intro'; mode?: ColorMode }
+  | { type: 'image'; src: string; mode?: ColorMode }
+  | { type: 'sequence'; children: string[]; mode?: ColorMode };
+
+type FilmstripItem = { type: 'intro'; mode?: ColorMode } | { type: 'image'; src: string; mode?: ColorMode };
 
 export const FRAMES: FrameConfig[] = [
-  '/assets/frames-temp/1.png',
-  '/assets/frames-temp/2.png',
-  '/assets/frames-temp/3.png',
+  { type: 'intro', mode: INTRO_SLOT_MODE },
+  { type: 'image', src: '/assets/frames-temp/2.png' },
+  { type: 'image', src: '/assets/frames-temp/3.png' },
   {
+    type: 'sequence',
     children: [
       '/assets/frames-temp/4-1.png',
       '/assets/frames-temp/4-2.png',
       '/assets/frames-temp/4-3.png',
     ],
+    mode: 'dark',
   },
-  '/assets/frames-temp/5.png',
-  '/assets/frames-temp/6.png',
+  { type: 'image', src: '/assets/frames-temp/5.png', mode: 'dark' },
+  { type: 'image', src: '/assets/frames-temp/6.png', mode: 'dark' },
 ];
 
   /** Filmstrip pauses on each slide before autoplay advances */
@@ -24,16 +34,26 @@ export const TIMING = {
   autoplayInterval: 4000,
 };
 
-/** Flat list of image paths for the filmstrip track. */
-function flattenFrames(frames: FrameConfig[]): string[] {
-  return frames.flatMap((f) => (typeof f === 'string' ? [f] : f.children));
+/** Flat list of filmstrip items for the track. */
+function flattenFrames(frames: FrameConfig[]): FilmstripItem[] {
+  return frames.flatMap((frame) => {
+    if (frame.type === 'intro') {
+      return [{ type: 'intro', mode: frame.mode }];
+    }
+
+    if (frame.type === 'sequence') {
+      return frame.children.map((src) => ({ type: 'image', src, mode: frame.mode }));
+    }
+
+    return [{ type: 'image', src: frame.src, mode: frame.mode }];
+  });
 }
 
 /** Maps each filmstrip index to a (possibly fractional) step index. */
 function buildStepMap(frames: FrameConfig[]): number[] {
   const map: number[] = [];
   frames.forEach((frame, stepIndex) => {
-    if (typeof frame === 'string') {
+    if (frame.type !== 'sequence') {
       map.push(stepIndex);
     } else {
       frame.children.forEach((_, childIdx) => {
@@ -49,7 +69,7 @@ export function stepToFilmstripIndex(stepIndex: number): number {
   let idx = 0;
   for (let i = 0; i < stepIndex; i++) {
     const frame = FRAMES[i];
-    idx += typeof frame === 'string' ? 1 : frame.children.length;
+    idx += frame.type === 'sequence' ? frame.children.length : 1;
   }
   return idx;
 }
@@ -57,11 +77,8 @@ export function stepToFilmstripIndex(stepIndex: number): number {
 export const FILMSTRIP = flattenFrames(FRAMES);
 export const STEP_MAP = buildStepMap(FRAMES);
 
-/** Filmstrip indices that trigger dark mode. */
-export const DARK_SLIDES = [3, 4, 5, 6, 7];
-
-export function isDarkSlide(index: number): boolean {
-  return DARK_SLIDES.includes(index);
+export function getSlideMode(index: number): ColorMode {
+  return FILMSTRIP[index]?.mode ?? 'light';
 }
 
 // Component
@@ -113,7 +130,7 @@ export function Slideshow({ currentIndex }: SlideshowProps) {
         className={styles.track}
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {FILMSTRIP.map((src, index) => (
+        {FILMSTRIP.map((frame, index) => (
           <div
             key={index}
             ref={(el) => {
@@ -122,11 +139,15 @@ export function Slideshow({ currentIndex }: SlideshowProps) {
             data-slide-index={index}
             className={styles.slideSlot}
           >
-            <Slide
-              src={src}
-              alt={`Slide ${index + 1}`}
-              isVisible={visibleSlides.has(index)}
-            />
+            {frame.type === 'intro' ? (
+              <IntroSlot isVisible={visibleSlides.has(index)} />
+            ) : (
+              <Slide
+                src={frame.src}
+                alt={`Slide ${index + 1}`}
+                isVisible={visibleSlides.has(index)}
+              />
+            )}
           </div>
         ))}
       </div>
