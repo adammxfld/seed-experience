@@ -1,0 +1,107 @@
+@use '@seed-health/tokens/scss/mixins' as *;
+@use '@seed-health/tokens/scss/variables' as *;
+@use '../../styles/timing' as *;
+
+.root {
+  position: relative;
+  height: $appearance-measurement-1600;
+  padding: 0 $gap-80 $gap-32;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: currentColor;
+}
+
+.stepList {
+  display: grid;
+  align-items: center;
+  width: 100%;
+}
+
+.stepItem {
+  display: contents;
+}
+
+.line {
+  height: 1px;
+  background-color: $color-dark-opacity-20;
+
+  .dark & {
+    background-color: $color-light-opacity-20;
+  }
+}
+
+.step {
+  @include text-fixed-label-small;
+  display: flex;
+  align-items: center;
+  color: currentColor;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: $gutter-small;
+  position: relative;
+  white-space: nowrap;
+  transition: all $step-duration $step-easing;
+
+  &::before {
+    content: '\2022';
+    position: absolute;
+    top: -($gap-16);
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity $step-dot-duration $step-dot-easing;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+.navButton {
+  position: absolute;
+  left: 0;
+  height: $appearance-measurement-800;
+  display: flex;
+  align-items: center;
+  background-color: $actions-primary;
+  color: $actions-inverse;
+  border-radius: $radius-full;
+  padding: 0 $gutter-small;
+  gap: 0.125em;
+  transition:
+    transform $nav-slide-duration $nav-slide-easing,
+    background-color $mode-duration $mode-easing,
+    color $mode-duration $mode-easing;
+  
+  .dark & {
+    background-color: $actions-inverse;
+    color: $actions-primary;
+  }
+}
+
+.button {
+  color: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease;
+  width: 16px;
+  height: 16px;
+
+  &:hover:not(:disabled) {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+

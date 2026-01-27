@@ -6,6 +6,10 @@ import { strainsDeliveredIcon } from './definitions/strainsDelivered';
 import { subscriptionsIcon } from './definitions/subscriptions';
 import { audioMenuIcon } from './definitions/audioMenu';
 import { audioPlayIcon } from './definitions/audioPlay';
+import { chevronLeftIcon } from './definitions/chevronLeft';
+import { chevronRightIcon } from './definitions/chevronRight';
+import { pauseIcon } from './definitions/pause';
+import { slideshowPlayIcon } from './definitions/slideshowPlay';
 
 export const ICONS: Record<IconName, IconDefinition> = {
   nutrientsDelivered: nutrientsDeliveredIcon,
@@ -14,4 +18,8 @@ export const ICONS: Record<IconName, IconDefinition> = {
   subscriptions: subscriptionsIcon,
   audioMenu: audioMenuIcon,
   audioPlay: audioPlayIcon,
+  chevronLeft: chevronLeftIcon,
+  chevronRight: chevronRightIcon,
+  pause: pauseIcon,
+  slideshowPlay: slideshowPlayIcon,
 };

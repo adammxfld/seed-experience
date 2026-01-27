@@ -2,7 +2,7 @@
 @use '@seed-health/tokens/scss/mixins' as *;
 
 .audioPlayerContainer {
-    flex: 0 1 15.5em;
+    flex: 0 1 auto;
     display: flex;
 }
 
@@ -13,8 +13,9 @@
 
 .trackInfo {
   @include text-fixed-body-xx-small;
-  flex: 1 1 0;
   font-weight: 500;
+  flex: 1 1 0;
+  margin-right: $margin-large;
   color: $actions-primary;
   display: flex;
   flex-direction: column;

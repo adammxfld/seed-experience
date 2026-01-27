@@ -11,4 +11,8 @@ export type IconName =
   'strainsDelivered' |
   'subscriptions' |
   'audioMenu' |
-  'audioPlay';
+  'audioPlay' |
+  'chevronLeft' |
+  'chevronRight' |
+  'pause' |
+  'slideshowPlay';

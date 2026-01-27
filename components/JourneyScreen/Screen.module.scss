@@ -1,14 +1,46 @@
 @use '@seed-health/tokens/scss/variables' as *;
+@use '../../styles/timing' as *;
 
 .root {
   z-index: 1;
+  position: relative;
   width: 100%;
   aspect-ratio: 180/101;
   border-radius: $radius-medium;
   background: linear-gradient(180deg, rgba(234, 235, 228, 0.50) 10.44%, rgba(234, 235, 228, 0.00) 48.61%, rgba(234, 235, 228, 0.50) 90.67%);
-  transition: background-color 0.3s ease;
+  transition: background-color $mode-duration $mode-easing;
+  color: $text-primary;
 
   &.dark {
     background: $container-seed-green;
+    color: $text-inverse-primary;
+  }
+}
+
+.timeline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pauseButton {
+  position: absolute;
+  right: $gap-80;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+  opacity: 1;
+  padding: $gap-16;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
   }
 }
