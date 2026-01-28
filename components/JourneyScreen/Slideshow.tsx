@@ -36,7 +36,7 @@ export const TIMING = {
 
 /** Flat list of filmstrip items for the track. */
 function flattenFrames(frames: FrameConfig[]): FilmstripItem[] {
-  return frames.flatMap((frame) => {
+  return frames.flatMap<FilmstripItem>((frame) => {
     if (frame.type === 'intro') {
       return [{ type: 'intro', mode: frame.mode }];
     }

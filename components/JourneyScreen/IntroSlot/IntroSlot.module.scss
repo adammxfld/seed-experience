@@ -6,6 +6,9 @@ $statement-position: 50%;
 
 .content {
   background: $background;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .introStatements {
