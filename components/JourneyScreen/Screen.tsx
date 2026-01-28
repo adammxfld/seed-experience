@@ -24,13 +24,14 @@ interface ScreenProps {
 export function Screen({ mode = 'light', onSlideChange }: ScreenProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
 
   // Notify parent of filmstrip index changes (autoplay or manual)
   useEffect(() => {
     onSlideChange?.(currentIndex);
   }, [currentIndex, onSlideChange]);
 
-  // Autoplay — uniform interval per filmstrip slide
+  // Autoplay — two-phase: trigger exit animation, then advance
   useEffect(() => {
     if (!isPlaying) return;
     if (currentIndex >= FILMSTRIP.length - 1) {
@@ -38,20 +39,35 @@ export function Screen({ mode = 'light', onSlideChange }: ScreenProps) {
       return;
     }
 
-    const timer = setTimeout(() => {
-      setCurrentIndex((prev) => prev + 1);
-    }, TIMING.autoplayInterval);
+    const frame = FILMSTRIP[currentIndex];
+    const interval = frame?.delay ?? TIMING.autoplayInterval;
+    const exitDuration = frame?.exitDuration ?? 0;
+    const holdTime = interval - exitDuration;
 
-    return () => clearTimeout(timer);
+    const exitTimer = setTimeout(() => {
+      if (exitDuration > 0) setIsExiting(true);
+    }, holdTime);
+
+    const advanceTimer = setTimeout(() => {
+      setIsExiting(false);
+      setCurrentIndex((prev) => prev + 1);
+    }, interval);
+
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(advanceTimer);
+    };
   }, [isPlaying, currentIndex]);
 
   // TimelineControl click → jump to that step's first filmstrip frame
   const handleStepChange = useCallback((stepIndex: number) => {
+    setIsExiting(false);
     setCurrentIndex(stepToFilmstripIndex(stepIndex));
     setIsPlaying(false);
   }, []);
 
   const handleTogglePlay = useCallback(() => {
+    setIsExiting(false);
     setIsPlaying((prev) => {
       if (!prev && currentIndex >= FILMSTRIP.length - 1) {
         setCurrentIndex(0);
@@ -65,7 +81,7 @@ export function Screen({ mode = 'light', onSlideChange }: ScreenProps) {
 
   return (
     <div className={`${styles.root} ${mode === 'dark' ? styles.dark : ''}`}>
-      <Slideshow currentIndex={currentIndex} />
+      <Slideshow currentIndex={currentIndex} isExiting={isExiting} />
       <div className={styles.timeline}>
         <TimelineControl
           steps={JOURNEY_STEPS}

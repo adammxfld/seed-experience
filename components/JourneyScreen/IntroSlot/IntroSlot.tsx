@@ -4,12 +4,15 @@ import slideStyles from "../Slide.module.scss";
 import styles from "./IntroSlot.module.scss";
 
 export const INTRO_SLOT_MODE = "light" as const;
+export const INTRO_SLOT_DELAY = 5000;
+export const INTRO_SLOT_EXIT_DURATION = 1000;
 
 interface IntroSlotProps {
   isVisible?: boolean;
+  isActive?: boolean;
 }
 
-function IntroStatements() {
+function IntroStatements({ isActive = true }: { isActive?: boolean }) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -17,12 +20,16 @@ function IntroStatements() {
   }, []);
 
   return (
-    <div className={styles.introStatements}>
+    <motion.div
+      className={styles.introStatements}
+      animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
       <motion.div
         className={styles.statement1}
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 0 }}
         animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 2, ease: "easeOut" }}
       >
         <p className={styles.textLine}>It's the 26<span className={styles.superscript}>th</span> of November.</p>
       </motion.div>
@@ -31,7 +38,7 @@ function IntroStatements() {
         className={styles.statement2}
         initial={{ opacity: 0, y: -20 }}
         animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 1.2 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 1.2 }}
       >
         <p className={styles.textLine}>You're 3 months in this journey.</p>
       </motion.div>
@@ -40,15 +47,15 @@ function IntroStatements() {
         className={styles.statement3}
         initial={{ opacity: 0, y: -20 }}
         animate={isMounted ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 2.4 }}
+        transition={{ duration: 2, ease: "easeOut", delay: 2.4 }}
       >
         <p className={styles.textLine}>And results are taking <span>Shape</span></p>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
-export default function IntroSlot({ isVisible = true }: IntroSlotProps) {
+export default function IntroSlot({ isVisible = true, isActive = true }: IntroSlotProps) {
   if (!isVisible) {
     return (
       <div className={slideStyles.slide}>
@@ -60,7 +67,7 @@ export default function IntroSlot({ isVisible = true }: IntroSlotProps) {
   return (
     <div className={slideStyles.slide}>
       <div className={styles.content}>
-        <IntroStatements />
+        <IntroStatements isActive={isActive} />
       </div>
     </div>
   );

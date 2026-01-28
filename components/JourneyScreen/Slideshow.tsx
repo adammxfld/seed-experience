@@ -1,19 +1,19 @@
 import { useRef, useState, useEffect } from 'react';
 import styles from './Slideshow.module.scss';
 import { Slide } from './Slide';
-import IntroSlot, { INTRO_SLOT_MODE } from './IntroSlot/IntroSlot';
+import IntroSlot, { INTRO_SLOT_MODE, INTRO_SLOT_DELAY, INTRO_SLOT_EXIT_DURATION } from './IntroSlot/IntroSlot';
 
 export type ColorMode = 'light' | 'dark';
 
 type FrameConfig =
-  | { type: 'intro'; mode?: ColorMode }
-  | { type: 'image'; src: string; mode?: ColorMode }
-  | { type: 'sequence'; children: string[]; mode?: ColorMode };
+  | { type: 'intro'; mode?: ColorMode; delay?: number; exitDuration?: number }
+  | { type: 'image'; src: string; mode?: ColorMode; delay?: number; exitDuration?: number }
+  | { type: 'sequence'; children: string[]; mode?: ColorMode; delay?: number; exitDuration?: number };
 
-type FilmstripItem = { type: 'intro'; mode?: ColorMode } | { type: 'image'; src: string; mode?: ColorMode };
+type FilmstripItem = { type: 'intro'; mode?: ColorMode; delay?: number; exitDuration?: number } | { type: 'image'; src: string; mode?: ColorMode; delay?: number; exitDuration?: number };
 
 export const FRAMES: FrameConfig[] = [
-  { type: 'intro', mode: INTRO_SLOT_MODE },
+  { type: 'intro', mode: INTRO_SLOT_MODE, delay: INTRO_SLOT_DELAY, exitDuration: INTRO_SLOT_EXIT_DURATION },
   { type: 'image', src: '/assets/frames-temp/2.png' },
   { type: 'image', src: '/assets/frames-temp/3.png' },
   {
@@ -38,14 +38,19 @@ export const TIMING = {
 function flattenFrames(frames: FrameConfig[]): FilmstripItem[] {
   return frames.flatMap<FilmstripItem>((frame) => {
     if (frame.type === 'intro') {
-      return [{ type: 'intro', mode: frame.mode }];
+      return [{ type: 'intro', mode: frame.mode, delay: frame.delay, exitDuration: frame.exitDuration }];
     }
 
     if (frame.type === 'sequence') {
-      return frame.children.map((src) => ({ type: 'image', src, mode: frame.mode }));
+      return frame.children.map((src, i) => ({
+        type: 'image', src, mode: frame.mode,
+        // Only the first child of a sequence inherits the delay/exitDuration
+        ...(i === 0 && frame.delay != null ? { delay: frame.delay } : {}),
+        ...(i === 0 && frame.exitDuration != null ? { exitDuration: frame.exitDuration } : {}),
+      }));
     }
 
-    return [{ type: 'image', src: frame.src, mode: frame.mode }];
+    return [{ type: 'image', src: frame.src, mode: frame.mode, delay: frame.delay, exitDuration: frame.exitDuration }];
   });
 }
 
@@ -84,9 +89,10 @@ export function getSlideMode(index: number): ColorMode {
 // Component
 interface SlideshowProps {
   currentIndex: number;
+  isExiting?: boolean;
 }
 
-export function Slideshow({ currentIndex }: SlideshowProps) {
+export function Slideshow({ currentIndex, isExiting = false }: SlideshowProps) {
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [visibleSlides, setVisibleSlides] = useState<Set<number>>(
     () => new Set([0]),
@@ -140,7 +146,7 @@ export function Slideshow({ currentIndex }: SlideshowProps) {
             className={styles.slideSlot}
           >
             {frame.type === 'intro' ? (
-              <IntroSlot isVisible={visibleSlides.has(index)} />
+              <IntroSlot isVisible={visibleSlides.has(index)} isActive={currentIndex === 0 && !isExiting} />
             ) : (
               <Slide
                 src={frame.src}
