@@ -1,5 +1,6 @@
 @use '@seed-health/tokens/scss/variables' as *;
 @use '@seed-health/tokens/scss/mixins' as *;
+@use '@/styles/timing' as *;
 
 .root {
   display: flex;
@@ -19,7 +20,7 @@
   gap: $gap-16;
   border-radius: $radius-full;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color $mode-duration $mode-easing;
 
   &:hover {
     background-color: $state-layer-dark-hovered;
@@ -35,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s ease;
+  transition: color $header-mode-duration $header-mode-easing;
 }
 
 .dark {

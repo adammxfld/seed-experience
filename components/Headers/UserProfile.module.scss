@@ -1,3 +1,4 @@
+@use '@/styles/timing' as *;
 @use '@seed-health/tokens/scss/mixins' as *;
 @use '@seed-health/tokens/scss/variables' as *;
 
@@ -12,7 +13,7 @@
   @include text-fixed-title-small;
   color: $text-primary;
   margin: 0;
-  transition: color 0.3s ease;
+  transition: color $header-mode-duration $header-mode-easing;
 }
 
 .dot {
@@ -22,7 +23,7 @@
   color: $color-primary-seed-green;
   vertical-align: top;
   transform: translate(2px, 6px);
-  transition: color 0.3s ease;
+  transition: color $header-mode-duration $header-mode-easing;
 
   svg {
     display: block;
@@ -72,7 +73,7 @@
   @include text-fixed-title-small;
   color: $extended-palette-indigo-blue;
   margin: 0;
-  transition: color 0.3s ease;
+  transition: color $header-mode-duration $header-mode-easing;
 }
 
 .dark {

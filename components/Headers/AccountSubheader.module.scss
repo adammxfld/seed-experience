@@ -1,5 +1,6 @@
 @use '@seed-health/tokens/scss/variables' as *;                                                                                                                                                                                                            
 @use '../../styles/functions' as *; 
+@use '@/styles/timing' as *;
 
 .root {
   z-index: 2;
@@ -13,5 +14,5 @@
     fluid-clamp($gap-16, $gap-48, 500px, 1440px)
     fluid-clamp(0em, $gap-40, 500px, 1440px);
   width: 100%;
-  transition: background-color 0.3s ease;
+  transition: background-color $mode-duration $mode-easing;
 }

@@ -17,8 +17,12 @@ $nav-slide-duration: 4000ms;
 $nav-slide-easing: $ease-custom;
 
 // Dark / light mode color transitions
-$mode-duration: 5000ms;
+$mode-duration: 4000ms;
 $mode-easing: ease;
+
+// Header Dark / light mode color transitions
+$header-mode-duration: 6000ms;
+$header-mode-easing: ease;
 
 // Step label transitions
 $step-duration: 4000ms;

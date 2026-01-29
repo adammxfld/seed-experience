@@ -1,5 +1,6 @@
 @use '@seed-health/tokens/scss/mixins' as *;
 @use '@seed-health/tokens/scss/variables' as *;
+@use '@/styles/timing' as *;
 
 .root {
   display: flex;
@@ -35,7 +36,7 @@
   width: $appearance-measurement-600;
   height: $appearance-measurement-600;
   color: $text-primary;
-  transition: color 0.3s ease;
+  transition: color $header-mode-duration $header-mode-easing;
 
   svg {
     display: block;
@@ -52,14 +53,14 @@
   @include text-fixed-title-small;
   color: $text-primary;
   margin: 0;
-  transition: color 0.3s ease;
+  transition: color $header-mode-duration $header-mode-easing;
 }
 
 .statLabel {
   @include text-fixed-body-xx-small;
   color: $text-primary;
   margin: 0;
-  transition: color 0.3s ease;
+  transition: color $header-mode-duration $header-mode-easing;
 }
 
 .dark {
