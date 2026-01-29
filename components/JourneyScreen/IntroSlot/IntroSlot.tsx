@@ -69,6 +69,16 @@ export default function IntroSlot({ isVisible = true, isActive = true }: IntroSl
       <div className={styles.content}>
         <IntroStatements isActive={isActive} />
       </div>
+      <div className={styles.videoFrame}>
+        <video
+          className={styles.video}
+          src="/assets/video/timeline-loop-sm.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
     </div>
   );
 }
