@@ -1,38 +1,24 @@
 @use '../../../styles/timing' as *;
+@use '../../../styles/functions' as *;
 @use '@seed-health/tokens/scss/mixins' as *;
 @use '@seed-health/tokens/scss/variables' as *;
+@use './shared' as *;
 
 .panel {
-  flex: 0 0 50%;
+  @include panel;
 }
 
 .panelContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 17%;
-  padding-inline: 4.72%;
+  @include panelContent;
 }
 
 .headingColumn {
-  flex: 0 0 14.24vw;
-  display: flex;
-  align-items: flex-start;
-
-  h3 {
-    @include text-fixed-label-medium;
-    margin: 0;
-  }
-
-  span {
-    @include text-desktop-display-large;
-    display: block;
-  }
+  @include headingColumn;
+  flex-basis: 14.24%;
 }
 
 .movieColumn {
-  flex: 0 0 45vw;
+  flex: 0 0 49.75%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,31 +41,6 @@
 }
 
 .copyColumn {
-  flex: 0 0 21vw;
-  display: flex;
-  flex-direction: column;
-  align-self: end;
-  gap: $gap-16;
-
-  h4 {
-    @include text-fixed-label-x-large;
-    text-wrap: balance;
-    margin: 0;
-  }
-
-  p {
-    @include text-fixed-body-medium;
-    text-wrap: balance;
-    margin: 0;
-  }
-
-  button {
-    @include text-fixed-label-small;
-    color: $text-primary;
-    display: inline;
-    border: 0;
-    background: none;
-    text-align: left;
-    padding: 0;
-  }
+  @include copyColumn;
+  flex-basis: 22%;
 }
