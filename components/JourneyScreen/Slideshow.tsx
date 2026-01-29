@@ -29,7 +29,7 @@ export const FRAMES: FrameConfig[] = [
     ],
     mode: 'dark',
   },
-  { type: 'image', src: '/assets/frames-temp/5.png', mode: 'dark' },
+  { type: 'image', src: '/assets/frames-temp/5.png', mode: 'light' },
   { type: 'image', src: '/assets/frames-temp/6.png', mode: 'dark' },
 ];
 
