@@ -1,0 +1,11 @@
+@use '@seed-health/tokens/scss/variables' as *;
+
+.panel {
+  flex: 0 0 50%;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-medium;
+}

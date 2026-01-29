@@ -1,0 +1,85 @@
+@use '../../../styles/timing' as *;
+@use '@seed-health/tokens/scss/mixins' as *;
+@use '@seed-health/tokens/scss/variables' as *;
+
+.panel {
+  flex: 0 0 50%;
+}
+
+.panelContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 17%;
+  padding-inline: 4.72%;
+}
+
+.headingColumn {
+  flex: 0 0 14.24vw;
+  display: flex;
+  align-items: flex-start;
+
+  h3 {
+    @include text-fixed-label-medium;
+    margin: 0;
+  }
+
+  span {
+    @include text-desktop-display-large;
+    display: block;
+  }
+}
+
+.movieColumn {
+  flex: 0 0 45vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.videoMask {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  aspect-ratio: 128 / 81;
+  border-radius: $radius-large;
+}
+
+.video {
+  width: 111.11%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-5.56%);
+}
+
+.copyColumn {
+  flex: 0 0 21vw;
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+  gap: $gap-16;
+
+  h4 {
+    @include text-fixed-label-x-large;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  p {
+    @include text-fixed-body-medium;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  button {
+    @include text-fixed-label-small;
+    color: $text-primary;
+    display: inline;
+    border: 0;
+    background: none;
+    text-align: left;
+    padding: 0;
+  }
+}
