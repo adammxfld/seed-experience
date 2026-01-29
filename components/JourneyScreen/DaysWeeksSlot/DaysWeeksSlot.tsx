@@ -49,13 +49,19 @@ export default function DaysWeeksSlot({ position, isActive = true, onAdvance }: 
       >
         <img
           src="/assets/daysweeks-sphere.svg"
-          alt=""
+          alt="sphere"
           className={styles.sphere}
           style={{ transform: `translateX(-${position * 38}%) translateY(-46.75%) scale(${sphereScale})` }}
         />
 
         <DaysPanel isVisible={isVisible} onAdvance={onAdvance} />
         <WeekPanel isVisible={isVisible} onAdvance={onAdvance} />
+
+        <img
+          src="/assets/weeks-line-figure.svg"
+          alt="line figure"
+          className={styles.lineFigure}
+        />
       </div>
     </div>
   );
