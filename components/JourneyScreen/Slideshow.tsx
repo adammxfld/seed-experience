@@ -35,7 +35,7 @@ export const FRAMES: FrameConfig[] = [
 
   /** Filmstrip pauses on each slide before autoplay advances */
 export const TIMING = {
-  autoplayInterval: 4000,
+  autoplayInterval: 6000,
 };
 
 /** Flat list of filmstrip items for the track. */
@@ -76,11 +76,17 @@ function buildStepMap(frames: FrameConfig[]): number[] {
       map.push(stepIndex);
       map.push(stepIndex + 1);
       stepIndex += 2;
-    } else if (frame.type === 'sequence') {
-      frame.children.forEach((_, childIdx) => {
-        map.push(stepIndex + childIdx / frame.children.length);
-      });
-      stepIndex += 1;
+    } else if (frame.type === 'sequence') {                                                                                                                                             
+      frame.children.forEach((_, childIdx) => {                                                                                                                                         
+        if (childIdx === 0) {                                                                                                                                                           
+          map.push(stepIndex);                                                                                                                                                          
+        } else if (childIdx === frame.children.length - 1) {                                                                                                                            
+          map.push(stepIndex + 0.45);                                                                                                                                                   
+        } else {                                                                                                                                                                        
+          map.push(stepIndex + 0.2);                                                                                                                                                    
+        }                                                                                                                                                                               
+      });                                                                                                                                                                               
+      stepIndex += 1;                                                                                                                                                                   
     } else {
       map.push(stepIndex);
       stepIndex += 1;

@@ -92,8 +92,8 @@
   cursor: pointer;
   padding: 0;
   transition: opacity 0.2s ease;
-  width: 16px;
-  height: 16px;
+  width: $appearance-measurement-400;
+  height: $appearance-measurement-400;
 
   &:hover:not(:disabled) {
     opacity: 0.8;
