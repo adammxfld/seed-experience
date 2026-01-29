@@ -7,7 +7,7 @@
   width: 100%;
   aspect-ratio: 180/101;
   border-radius: $radius-medium;
-  background: linear-gradient(180deg, rgba(234, 235, 228, 0.50) 10.44%, rgba(234, 235, 228, 0.00) 48.61%, rgba(234, 235, 228, 0.50) 90.67%);
+  background: $container-gray;
   transition: background-color $mode-duration $mode-easing;
   color: $text-primary;
 

@@ -1,0 +1,127 @@
+@use '../../../styles/timing' as *;
+@use '@seed-health/tokens/scss/mixins' as *;
+@use '@seed-health/tokens/scss/variables' as *;
+
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: $color-neutral-foam-white;
+  border-radius: $radius-medium;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  width: 200%;
+  height: 100%;
+  transition: transform $track-duration $track-easing;
+  will-change: transform;
+}
+
+.sphere {
+  position: absolute;
+  top: 44.5%;
+  left: 45.25%;
+  width: 11.5%;
+  aspect-ratio: 151 / 152;
+  transform-origin: left center;
+  transition: transform $track-duration $track-easing;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.panel {
+  flex: 0 0 50%;
+}
+
+.leftPanelContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 17%;
+  padding-inline: 4.72%;
+}
+
+.headingColumn {
+  flex: 0 0 14.24vw;
+  display: flex;
+  align-items: flex-start;
+  h3 {
+    @include text-fixed-label-medium;
+    margin: 0;
+  }
+
+  span {
+    @include text-desktop-display-large;
+    display: block;
+  }
+}
+
+.movieColumn {
+  flex: 0 0 45vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.videoMask {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  aspect-ratio: 128 / 81;
+  border-radius: $radius-large;
+}
+
+.video {
+  width: 111.11%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-5.56%);
+}
+
+.copyColumn {
+  flex: 0 0 21vw;
+  display: flex;
+  flex-direction: column;
+  align-self: end;
+  gap: $gap-16;
+  
+  h4 {
+    @include text-fixed-label-x-large;
+    text-wrap: balance;
+    margin: 0;
+  }
+  
+  p {
+    @include text-fixed-body-medium;
+    text-wrap: balance;
+    margin: 0;
+  }
+  button {
+    @include text-fixed-label-small;
+    color: $text-primary;
+    display: inline;
+    border: 0;
+    background: none;
+    text-align: left;
+    padding: 0;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $radius-medium;
+  user-select: none;
+  pointer-events: none;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: $radius-medium;
+}
