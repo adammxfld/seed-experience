@@ -2,22 +2,26 @@
 // Animation timing
 // ---------------------------------------------------------------------------
 
-$ease-custom: cubic-bezier(0.4, 0, 0.2, 1);
+$ease-custom: cubic-bezier(0.4, 0, 0.5, 1);
 
 // Filmstrip track slide transition
-$track-duration: 2000ms;
+$track-duration: 4000ms;
 $track-easing: $ease-custom;
 
+// Content visibility
+$content-visibility-duration: 2000ms;
+$content-visibility-easing: $ease-custom;
+
 // TimelineControl nav button slide
-$nav-slide-duration: 2000ms;
+$nav-slide-duration: 4000ms;
 $nav-slide-easing: $ease-custom;
 
 // Dark / light mode color transitions
-$mode-duration: 2000ms;
+$mode-duration: 5000ms;
 $mode-easing: ease;
 
 // Step label transitions
-$step-duration: 2000ms;
+$step-duration: 4000ms;
 $step-easing: $ease-custom;
 
 // Step dot (hover indicator) transition

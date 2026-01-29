@@ -25,9 +25,14 @@
   width: 11.5%;
   aspect-ratio: 151 / 152;
   transform-origin: left center;
-  transition: transform $track-duration $track-easing;
+  transition: transform $track-duration $track-easing, opacity $content-visibility-duration $content-visibility-easing;
   will-change: transform;
   pointer-events: none;
+  opacity: 0;
+
+  .isVisible & {
+    opacity: 1;
+  }
 }
 
 .image {

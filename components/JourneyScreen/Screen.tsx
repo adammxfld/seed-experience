@@ -76,12 +76,21 @@ export function Screen({ mode = 'light', onSlideChange }: ScreenProps) {
     });
   }, [currentIndex]);
 
+  // Manual advance from "Dive Deeper" buttons
+  const handleAdvance = useCallback(() => {
+    if (currentIndex < FILMSTRIP.length - 1) {
+      setIsExiting(false);
+      setCurrentIndex((prev) => prev + 1);
+      setIsPlaying(false);
+    }
+  }, [currentIndex]);
+
   // Map filmstrip index to fractional step for TimelineControl
   const currentStep = STEP_MAP[currentIndex] ?? 0;
 
   return (
     <div className={`${styles.root} ${mode === 'dark' ? styles.dark : ''}`}>
-      <Slideshow currentIndex={currentIndex} isExiting={isExiting} />
+      <Slideshow currentIndex={currentIndex} isExiting={isExiting} onAdvance={handleAdvance} />
       <div className={styles.timeline}>
         <TimelineControl
           steps={JOURNEY_STEPS}

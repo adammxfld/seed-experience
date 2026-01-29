@@ -61,5 +61,6 @@
 
 .copyColumn {
   @include copyColumn;
+  @include arrowRt;
   flex-basis: 23%;
 }

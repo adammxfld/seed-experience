@@ -10,7 +10,7 @@ export function HeaderLinksPrimary({ mode = 'light' }: HeaderLinksPrimaryProps) 
   return (
     <div className={`${styles.root} ${mode === 'dark' ? styles.dark : ''}`}>
       <div className={styles.logoSection}>
-        <h1 className={styles.logoText}>Seed ●</h1>
+        <h1 className={styles.logoText}>Seed</h1>
       </div>
 
       <ul className={styles.nav}>

@@ -1,9 +1,16 @@
 @use '../../../styles/functions' as *;
+@use '../../../styles/timing' as *;
 @use '@seed-health/tokens/scss/mixins' as *;
 @use '@seed-health/tokens/scss/variables' as *;
 
 @mixin panel {
   flex: 0 0 50%;
+  opacity: 0;
+  transition: opacity $content-visibility-duration $content-visibility-easing;
+
+  &.isVisible {
+    opacity: 1;
+  }
 }
 
 @mixin panelContent {
@@ -33,6 +40,25 @@
   }
 }
 
+@mixin arrowRt {
+  button {
+    @include text-fixed-label-small;
+    color: $text-primary;
+    border: 0;
+    background: none;
+    text-align: left;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+      svg {
+        width: $appearance-measurement-400;
+        margin-right: $margin-small;
+        aspect-ratio: 1/1;
+      }
+  }
+}
+
 @mixin copyColumn {
   flex-grow: 0;
   flex-shrink: 1;
@@ -51,15 +77,5 @@
     @include text-fixed-body-medium;
     text-wrap: balance;
     margin: 0;
-  }
-
-  button {
-    @include text-fixed-label-small;
-    color: $text-primary;
-    display: inline;
-    border: 0;
-    background: none;
-    text-align: left;
-    padding: 0;
   }
 }

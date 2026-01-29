@@ -10,12 +10,12 @@
   border-top-right-radius: $radius-medium;
   border-bottom-right-radius: $radius-large;
   border-bottom-left-radius: $radius-large;
-  background: $container-gray;
-  transition: background-color $mode-duration $mode-easing;
+  background-color: $container-gray;
   color: $text-primary;
+  transition: background-color $mode-duration $mode-easing, color $mode-duration $mode-easing;
 
   &.dark {
-    background: $container-seed-green;
+    background-color: $container-seed-green;
     color: $text-inverse-primary;
   }
 }

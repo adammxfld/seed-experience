@@ -174,9 +174,10 @@ function filmstripToVisualSlot(filmstripIndex: number): number {
 interface SlideshowProps {
   currentIndex: number;
   isExiting?: boolean;
+  onAdvance?: () => void;
 }
 
-export function Slideshow({ currentIndex, isExiting = false }: SlideshowProps) {
+export function Slideshow({ currentIndex, isExiting = false, onAdvance }: SlideshowProps) {
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [visibleSlides, setVisibleSlides] = useState<Set<number>>(
     () => new Set([0]),
@@ -248,6 +249,8 @@ export function Slideshow({ currentIndex, isExiting = false }: SlideshowProps) {
             ) : slot.type === 'daysweeks' ? (
               <DaysWeeksSlot
                 position={getDaysWeeksPosition(slot.filmstripStart)}
+                isActive={FILMSTRIP[currentIndex]?.type === 'daysweeks' && !isExiting}
+                onAdvance={onAdvance}
               />
             ) : (
               <Slide

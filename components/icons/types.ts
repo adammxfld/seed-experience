@@ -15,4 +15,5 @@ export type IconName =
   'chevronLeft' |
   'chevronRight' |
   'pause' |
-  'slideshowPlay';
+  'slideshowPlay' |
+  'arrowRt';

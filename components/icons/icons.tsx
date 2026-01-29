@@ -10,6 +10,7 @@ import { chevronLeftIcon } from './definitions/chevronLeft';
 import { chevronRightIcon } from './definitions/chevronRight';
 import { pauseIcon } from './definitions/pause';
 import { slideshowPlayIcon } from './definitions/slideshowPlay';
+import { arrowRtIcon } from './definitions/arrowRt';
 
 export const ICONS: Record<IconName, IconDefinition> = {
   nutrientsDelivered: nutrientsDeliveredIcon,
@@ -22,4 +23,5 @@ export const ICONS: Record<IconName, IconDefinition> = {
   chevronRight: chevronRightIcon,
   pause: pauseIcon,
   slideshowPlay: slideshowPlayIcon,
+  arrowRt: arrowRtIcon,
 };

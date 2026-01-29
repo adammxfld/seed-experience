@@ -1,8 +1,14 @@
+import { Icon } from '@/components/Icons';
 import styles from './WeekPanel.module.scss';
 
-export default function WeekPanel() {
+interface WeekPanelProps {
+  isVisible?: boolean;
+  onAdvance?: () => void;
+}
+
+export default function WeekPanel({ isVisible = false, onAdvance }: WeekPanelProps) {
   return (
-    <div className={styles.panel}>
+    <div className={`${styles.panel} ${isVisible ? styles.isVisible : ''}`}>
       <div className={styles.panelContent}>
         <div className={styles.headingColumn}>
           <h3>During Weeks <span>2 &amp; 4</span></h3>
@@ -20,7 +26,7 @@ export default function WeekPanel() {
         <div className={styles.copyColumn}>
           <h4>You improved your health regularity and skin.</h4>
           <p>Bowel movements became more consistent, and smoother, clearer skin gave you a healthy, resilient glow.</p>
-          <button>Dive Deeper</button>
+          <button onClick={onAdvance}><Icon name={'arrowRt'} />Dive Deeper</button>
         </div>
       </div>
     </div>
