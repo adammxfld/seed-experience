@@ -248,7 +248,6 @@ export function Slideshow({ currentIndex, isExiting = false }: SlideshowProps) {
             ) : slot.type === 'daysweeks' ? (
               <DaysWeeksSlot
                 position={getDaysWeeksPosition(slot.filmstripStart)}
-                isVisible={visibleSlides.has(index)}
               />
             ) : (
               <Slide
