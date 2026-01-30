@@ -1,4 +1,4 @@
-# Adam's quick notes
+# Adam's notes
 
 ## What I did ...
 - Hopefully the structure is self-explanatory
