@@ -36,12 +36,14 @@ I would deeply refactor. I don't consider this scalable as-is.
 - Might opt to move animating background images (sphere, X+line) to the parent component vs chapter
 ### Consult Design: 
 - Define responsive behavior
+- Footer not visible in certain screen sizes
 - Figma bg doesn't use DS colors. I chose to employ close DS colors. Sometimes non-DS is appropriate.
 - 1st chapter video background doesn't match DS color for 2nd frame
 - Some DS font mixins needed extra CSS adjustments. Maybe bespoke treatment for Logo but not other places.
 ### Fixable:
 - Timeline button loads far left of screen
 - 1st Chapter text overlaps in smaller screens
+- 1st chapter - initial load should cover footer, then animate to expose footer
 - Advance and pause timing for chapters can be refined
 - Timeline button advance timing
 - Timeline button missing icons in Safari
