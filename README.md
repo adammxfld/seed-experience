@@ -1,4 +1,64 @@
-# Seed Frontend Engineering Take-Home
+# Adam's quick notes
+
+What I did ...
+- Hopefully the structure is self-explanatory
+- Used SCSS
+- Applied Design System in SCSS
+- Made some - but minimal - responsive adjustments
+- Used the Claude + terminal VSCode integration
+- Focused on being faithful to Figma prototype and DS integration
+- Used Claude to frame and wire up some basics to narrow my focus
+- Quick + crude visual representation of the DS: `/ds-library` (Claude)
+- Headers and Parent components read Dark/Light mode from slides (alternates light/dark text)
+
+Basic app structure
+- /index.tsx (straightforward):
+```tsx
+  <Header mode={colorMode} />
+  <AccountSubheader mode={colorMode} />
+  <Screen mode={colorMode} onSlideChange={handleSlideChange} />
+  <Footer />
+```
+- Screen.tsx: The controller/orchestrator. Manages state; Handles autoplay logic
+- Slideshow.tsx: The visual renderer. Content configuration; visual slots + slide visibility; track position
+
+There is room for improvement (this is not everything) ...
+- I would deeply refactor. I don't consider this scalable as-is.
+- I wish I had primarily applied the Design tokens in the markup, JavaScript/TypeScript & CSS. That would be a cleaner delineation between semantic code and style.
+- Would abstract the text, imagery + other data, then populate the components from that
+- More accessibility integration
+- Performance: 1st slide is purged when off-screen but not others (via IntersectionObserver)
+- Load movies optimized for device-size
+- Might opt to move animating background images (sphere, X+line) to the parent component vs chapter
+- Consult Design: Define responsive behavior
+- Consult Design: Figma bg doesn't use DS colors. I chose to employ close DS colors. Sometimes non-DS is appropriate.
+- Consult Design: 1st chapter video background doesn't match DS color for 2nd frame
+- Consult Design: Some DS font mixins needed extra CSS adjustments. Maybe bespoke treatment for Logo but not other places.
+- Fixable: Timeline button loads far left of screen
+- Fixable: 1st Chapter text overlaps in smaller screens
+- Fixable: Advance and pause timing for chapters can be refined
+- Fixable: Timeline button advance timing
+- Fixable: Timeline button missing icons in Safari
+- Fixable: Timeline button shading based on progress
+- Fixable: Left/Right side clicks to advance/reverse
+- Fixable: A click on "Intro" should fade-out current/fade-in intro (not rewind)
+- Fixable: light slide vs footer color mismatch
+- Fixable: animate X+line on advance
+- Fixable: pause auto-play on chapter 2 (per figma)
+- SVGs: better organize integration
+
+
+I really enjoyed building this.  It is beautifully designed, fun to strategize and put together 
+- I have some suggestions on this project as a test:
+- More opinionated setup would be faster + allow more meticulous focus on design
+- CSS/SCSS/CSS in JS flexibility is nice but not necessary + slows down initial setup/orientation
+- Focus project on your areas of highest priority
+- Could pre-mock some framework elements with DS (header? footer? one slide?)
+- Offer a visual DS representation
+- Figma had everything necessary but could be better organized for rapid development
+
+
+## Seed Frontend Engineering Take-Home
 
 Next.js project using the Pages router
 - Feel free to modify file structure, create components, add tests, rename things, etc
