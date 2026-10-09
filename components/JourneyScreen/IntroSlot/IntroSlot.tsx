@@ -3,10 +3,6 @@ import { useEffect, useState } from "react";
 import slideStyles from "../Slide.module.scss";
 import styles from "./IntroSlot.module.scss";
 
-export const INTRO_SLOT_MODE = "light" as const;
-export const INTRO_SLOT_DELAY = 5000;
-export const INTRO_SLOT_EXIT_DURATION = 1000;
-
 interface IntroSlotProps {
   isVisible?: boolean;
   isActive?: boolean;

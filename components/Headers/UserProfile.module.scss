@@ -14,6 +14,7 @@
   color: $text-primary;
   margin: 0;
   transition: color $header-mode-duration $header-mode-easing;
+  white-space: nowrap;
 }
 
 .dot {

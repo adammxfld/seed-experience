@@ -1,0 +1,28 @@
+@use '@seed-health/tokens/scss/variables' as *;
+
+// ---------------------------------------------------------------------------
+// Layout: breakpoints and shared layout mixins
+// ---------------------------------------------------------------------------
+
+// Breakpoints (mobile-first)
+
+// base: 0px + 
+$bp-sm: 500px;    // Large phones
+$bp-md: 768px;    // Tablets (portrait)
+$bp-lg: 1024px;   // Tablets (landscape) + Small desktop
+$bp-xl: 1280px;   // Desktops
+$bp-2xl: 1440px;  // Large desktops
+
+@mixin above($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+// Journey screen corners: medium on top, large on the bottom
+@mixin screen-radius {
+  border-top-left-radius: $radius-medium;
+  border-top-right-radius: $radius-medium;
+  border-bottom-right-radius: $radius-large;
+  border-bottom-left-radius: $radius-large;
+}

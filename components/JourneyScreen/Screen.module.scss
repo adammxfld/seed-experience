@@ -1,22 +1,36 @@
 @use '@seed-health/tokens/scss/variables' as *;
 @use '../../styles/timing' as *;
+@use '../../styles/layout' as *;
 
 .root {
   z-index: 1;
   position: relative;
   width: 100%;
-  aspect-ratio: 180/101;
-  border-top-left-radius: $radius-medium;
-  border-top-right-radius: $radius-medium;
-  border-bottom-right-radius: $radius-large;
-  border-bottom-left-radius: $radius-large;
+  aspect-ratio: 180/375;
+  @include screen-radius;
   background-color: $container-gray;
   color: $text-primary;
-  transition: background-color $mode-duration $mode-easing, color $mode-duration $mode-easing;
+  transition: background-color $mode-duration $mode-easing $mode-duration, color $mode-duration $mode-easing;
+  overflow: hidden;
 
   &.dark {
     background-color: $container-seed-green;
     color: $text-inverse-primary;
+  }
+}
+@include above($bp-sm) {
+  .root {
+    aspect-ratio: 180/250;
+  }
+}
+@include above($bp-md) {
+  .root {
+    aspect-ratio: 180/130;
+  }
+}
+@include above($bp-lg) {
+  .root {
+    aspect-ratio: 180/101;
   }
 }
 

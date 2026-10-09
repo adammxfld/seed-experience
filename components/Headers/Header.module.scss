@@ -1,9 +1,14 @@
 @use '@seed-health/tokens/scss/variables' as *;
 @use '../../styles/functions' as *;
+@use '../../styles/layout' as *;
 
 .root {
   z-index: 2;
   position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: $bp-2xl;
   width: 100%;
   height: var(--header-height);
   display: flex;
@@ -12,9 +17,9 @@
 
   padding:
     $gap-8
-    fluid-clamp(0em, $gap-8, 500px, 1440px)
-    fluid-clamp(0em, $gap-8, 500px, 1440px)
-    fluid-clamp(0em, $gap-16, 500px, 1440px);
+    fluid-clamp(0em, $gap-8, $bp-sm, $bp-2xl)
+    fluid-clamp(0em, $gap-8, $bp-sm, $bp-2xl)
+    fluid-clamp(0em, $gap-16, $bp-sm, $bp-2xl);
   border-top-left-radius: $radius-medium;
   border-top-right-radius: $radius-medium;
   transition: background-color 0.3s ease;

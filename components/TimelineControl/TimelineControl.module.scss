@@ -80,6 +80,14 @@
     background-color: $actions-inverse;
     color: $actions-primary;
   }
+
+  // Slides faster on a rewind (attribute set on the Screen root)
+  :global([data-rewinding]) & {
+    transition:
+      transform $nav-rewind-duration $nav-slide-easing,
+      background-color $mode-duration $mode-easing,
+      color $mode-duration $mode-easing;
+  }
 }
 
 .button {
@@ -95,8 +103,10 @@
   width: $appearance-measurement-400;
   height: $appearance-measurement-400;
 
-  &:hover:not(:disabled) {
-    opacity: 0.8;
+  @media (hover: hover) {
+    &:hover:not(:disabled) {
+      opacity: 0.8;
+    }
   }
 
   &:disabled {

@@ -1,18 +1,23 @@
 @use '@seed-health/tokens/scss/variables' as *;                                                                                                                                                                                                            
-@use '../../styles/functions' as *; 
+@use '../../styles/functions' as *;
+@use '../../styles/layout' as *;
 @use '@/styles/timing' as *;
 
 .root {
   z-index: 2;
   position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: $bp-2xl;
   top: var(--header-height);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   padding:
-    fluid-clamp(0em, $gap-48, 500px, 1440px)
-    fluid-clamp($gap-16, $gap-48, 500px, 1440px)
-    fluid-clamp(0em, $gap-40, 500px, 1440px);
+    fluid-clamp(0em, $gap-48, $bp-sm, $bp-2xl)
+    fluid-clamp($gap-16, $gap-48, $bp-sm, $bp-2xl)
+    fluid-clamp(0em, $gap-40, $bp-sm, $bp-2xl);
   width: 100%;
   transition: background-color $mode-duration $mode-easing;
 }

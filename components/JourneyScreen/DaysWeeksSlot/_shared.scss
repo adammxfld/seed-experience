@@ -1,4 +1,5 @@
 @use '../../../styles/functions' as *;
+@use '../../../styles/layout' as *;
 @use '../../../styles/timing' as *;
 @use '@seed-health/tokens/scss/mixins' as *;
 @use '@seed-health/tokens/scss/variables' as *;
@@ -15,11 +16,23 @@
 
 @mixin panelContent {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  row-gap: $gap-24;
   justify-content: space-between;
   width: 100%;
-  margin-top: 17%;
+  margin-top: 45%;
   padding-inline: 4.72%;
+  @include above($bp-sm) {
+    margin-top: 30%;
+  }
+  @include above($bp-md) {
+    margin-top: 20%;
+    flex-direction: row;
+    row-gap: 0;
+  }
+  @include above($bp-lg) {
+    margin-top: 17%;
+  }
 }
 
 @mixin headingColumn {
@@ -35,7 +48,7 @@
 
   span {
     @include text-desktop-display-large;
-    font-size: fluid-clamp($typography-size-600, $typography-size-1600, 500px, 1440px);
+    font-size: fluid-clamp($typography-size-600, $typography-size-1600, $bp-sm, $bp-2xl);
     display: block;
   }
 }

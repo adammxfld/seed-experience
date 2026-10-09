@@ -24,7 +24,7 @@ export function TimelineControl({
   onStepChange,
 }: TimelineControlProps) {
   const [internalStep, setInternalStep] = useState(defaultStep);
-  const [sliderLeft, setSliderLeft] = useState(0);
+  const [sliderLeft, setSliderLeft] = useState<number | null>(null);
 
   const isControlled = controlledStep !== undefined;
   const activeStep = isControlled ? controlledStep : internalStep;
@@ -124,7 +124,14 @@ export function TimelineControl({
 
   // Enable transitions only after the first paint at the correct position
   useEffect(() => {
-    setReady(true);
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => setReady(true));
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
   }, []);
 
   if (steps.length === 0) return null;
@@ -158,7 +165,8 @@ export function TimelineControl({
         ref={navRef}
         className={styles.navButton}
         style={{
-          transform: `translateX(${sliderLeft}px)`,
+          transform: `translateX(${sliderLeft ?? 0}px)`,
+          ...(sliderLeft === null ? { visibility: 'hidden' } : {}),
           ...(ready ? {} : { transition: 'none' }),
         }}
       >

@@ -2,6 +2,41 @@
 
 My app is available at [https://seed-nine-phi.vercel.app/](https://seed-nine-phi.vercel.app/).
 
+## What's changed since my last commit
+
+**It works better on smaller screens now.** 
+- I set up proper breakpoints (500, 768, 1024, 1280 and 1440) in a new `styles/_layout.scss` and used them on the chapters (in place of hard-coded widths I had before).
+- The screen gets taller on phones and tablets and only goes back to the wide Figma ratio at 1024 and up.
+- The three intro statements stack down the left side on phones, then spread out into a row.
+- On the days/weeks panels, the heading, media and copy stack vertically below 768, so the copy sits full width under the images.
+- The whole page caps at 1440 wide and centers, headers included. Past that the page background is snow white.
+- A few labels in the header and footer no longer wrap onto two lines.
+
+**Going backward no longer plays everything in reverse.** 
+- If you click an earlier step (or hit play at the end), the slideshow fades out, jumps to the new spot while hidden, and fades back in.
+- Going forward is the same as before.
+- The nav button still slides back, just faster (1 second instead of 4).
+
+**The nav button doesn't slide in from the left on load anymore.**
+- It stays hidden until it knows where it belongs, then just appears there.
+
+**Leaving Weeks 2–4 looks more intentional.**
+- The week panel stays fully visible as it slides away instead of fading out.
+- Its text was quietly turning white on a near-white background as dark mode kicked in. Fixed by pinning the text color on that slide.
+- The line figure now scales up and drifts as the slide leaves, the same way the sphere does. The exact numbers still need tuning against Figma.
+
+**The big video waits its turn.** 
+- The 38 MB video on First 7 Days used to start downloading on page load. Now it only loads and plays when that panel shows up, and pauses when you move on. 
+- In reality it would be re-encoded or optimize to serve appropriate sizes for bandwidth/device, it's far too big.
+
+**Housekeeping.**
+- The journey definition (frames, timeline labels, timing) moved out of `Slideshow.tsx` into `components/JourneyScreen/journey.config.ts`. The labels now live on the frames, so the two lists can't get out of sync, and `Slideshow.tsx` is just the renderer.
+- One shared `screen-radius` mixin for the screen and slide corners.
+- Hover styles on the timeline arrows only apply on devices that can actually hover.
+- Dropped `will-change` from the animated pieces.
+
+This knocks out three things from my "Fixable" list below: the timeline button loading far left, the intro click rewinding, and animating the X+line on advance. I've left the list as it was so you can see where I started.
+
 ## What I did ...
 - Hopefully the structure is self-explanatory
 - Used SCSS
@@ -38,7 +73,7 @@ I would deeply refactor. I don't consider this scalable as-is.
 - Define responsive behavior
 - Footer not visible in certain screen sizes
 - Figma bg doesn't use DS colors. I chose to employ close DS colors. Sometimes non-DS is appropriate.
-- 1st chapter video background doesn't match DS color for 2nd frame
+- 1st chapter video background doesn't match DS background color - creaes a mismatch transitioning to 2nd chapter
 - Some DS font mixins needed extra CSS adjustments. Maybe bespoke treatment for Logo but not other places.
 ### Fixable:
 - Timeline button loads far left of screen
@@ -63,6 +98,8 @@ I really enjoyed building this.  It is beautifully designed, fun to strategize a
 - Could pre-mock some framework elements with DS (header? footer? one slide?)
 - Offer a visual DS representation
 - Figma had everything necessary but could be better organized for rapid development
+- The package had token files internally, but its export map prevented me from deep-importing them per the instructions. I changed my imports to use the supported public CSS/SCSS paths.
+-  For the token viewer, I used the exported raw token data directly. 
 
 
 ## Seed Frontend Engineering Take-Home

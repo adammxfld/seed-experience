@@ -4,6 +4,12 @@
   position: relative;
   width: 100%;
   height: 100%;
+  transition: opacity $rewind-fade-duration $rewind-fade-easing;
+
+  // Hidden for the whole rewind (set on the Screen root)
+  :global([data-rewinding]) & {
+    opacity: 0;
+  }
 }
 
 .track {
@@ -11,7 +17,11 @@
   width: 100%;
   height: 100%;
   transition: transform $track-duration $track-easing;
-  will-change: transform;
+
+  // Reposition instantly while hidden
+  :global([data-rewinding='jump']) & {
+    transition: none;
+  }
 }
 
 .slideSlot {

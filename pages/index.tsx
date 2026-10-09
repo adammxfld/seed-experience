@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import { Header, AccountSubheader } from '@/components/Headers';
 import { Screen } from '@/components/JourneyScreen';
 import { Footer } from '@/components/Footer';
-import { getSlideMode } from '@/components/JourneyScreen/Slideshow';
+import { getSlideMode } from '@/components/JourneyScreen/journey.config';
 import type { ColorMode } from '@/components/JourneyScreen/Screen';
 
 export default function Home() {

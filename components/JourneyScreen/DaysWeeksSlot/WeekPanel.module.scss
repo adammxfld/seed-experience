@@ -1,4 +1,5 @@
 @use '../../../styles/functions' as *;
+@use '../../../styles/layout' as *;
 @use '@seed-health/tokens/scss/variables' as *;
 @use '@seed-health/tokens/scss/mixins' as *;
 @use './shared' as *;
@@ -37,13 +38,13 @@
 
   label {
     @include text-fixed-title-small;
-    font-size: fluid-clamp($typography-size-300, $typography-size-600, 500px, 1440px);
+    font-size: fluid-clamp($typography-size-300, $typography-size-600, $bp-sm, $bp-2xl);
     position: absolute;
     bottom: 8%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    margin-inline: 25%;
     color: $color-primary-white;
-    width: 40%;
     text-align: center;
 
 
@@ -62,5 +63,8 @@
 .copyColumn {
   @include copyColumn;
   @include arrowRt;
-  flex-basis: 23%;
+  flex-basis: 100%;
+  @include above($bp-md) {
+    flex-basis: 23%;
+  }
 }

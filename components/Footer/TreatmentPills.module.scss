@@ -16,6 +16,7 @@
     @include text-fixed-label-x-small;
     line-height: $appearance-measurement-200;
     display: block;
+    white-space: nowrap;
 
     &.uppercase {
       text-transform: uppercase;

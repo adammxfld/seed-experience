@@ -15,6 +15,8 @@ $content-visibility-easing: $ease-custom;
 // TimelineControl nav button slide
 $nav-slide-duration: 4000ms;
 $nav-slide-easing: $ease-custom;
+// Faster nav button slide when navigating backward
+$nav-rewind-duration: 1000ms;
 
 // Dark / light mode color transitions
 $mode-duration: 4000ms;
@@ -23,6 +25,11 @@ $mode-easing: ease;
 // Header Dark / light mode color transitions
 $header-mode-duration: 6000ms;
 $header-mode-easing: ease;
+
+// Rewind (backward navigation) fade out / in
+// Must match REWIND_FADE_DURATION in components/JourneyScreen/Screen.tsx
+$rewind-fade-duration: 450ms;
+$rewind-fade-easing: ease;
 
 // Step label transitions
 $step-duration: 4000ms;
