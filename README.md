@@ -1,8 +1,8 @@
 # Adam's notes
 
-My app is available at [https://seed-nine-phi.vercel.app/](https://seed-nine-phi.vercel.app/).
+My app is available at this mess of letters [https://seed-jequoxnqe-adams-projects-4517da86.vercel.app/](https://seed-jequoxnqe-adams-projects-4517da86.vercel.app/).
 
-## What's changed since my last commit
+## What's changed since last time...
 
 **It works better on smaller screens now.** 
 - I set up proper breakpoints (500, 768, 1024, 1280 and 1440) in a new `styles/_layout.scss` and used them on the chapters (in place of hard-coded widths I had before).
